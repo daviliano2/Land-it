@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class Ship : MonoBehaviour
 {
+    Rigidbody rigidBody;
+
     void Start()
     {
-
+        rigidBody = GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -19,7 +21,7 @@ public class Ship : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            print("thrusting");
+            rigidBody.AddRelativeForce(Vector3.up);
         }
 
         if (Input.GetKey(KeyCode.A))
