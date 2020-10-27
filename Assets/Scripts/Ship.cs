@@ -26,11 +26,11 @@ public class Ship : MonoBehaviour
 
         if (Input.GetKey(KeyCode.A))
         {
-            print("rotating left");
+            transform.Rotate(Vector3.forward);
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            print("rotating right");
+            transform.Rotate(-Vector3.forward);
         }
     }
 }
