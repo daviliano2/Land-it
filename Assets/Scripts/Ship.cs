@@ -16,10 +16,11 @@ public class Ship : MonoBehaviour
 
     void Update()
     {
-        ProcessInput();
+        ThrustShip();
+        RotateShip();
     }
 
-    void ProcessInput()
+    void ThrustShip()
     {
         if (Input.GetKey(KeyCode.Space))
         {
@@ -32,6 +33,11 @@ public class Ship : MonoBehaviour
             // audioSource.Stop();
             audioSource.pitch = 1;
         }
+    }
+
+    void RotateShip()
+    {
+        rigidBody.freezeRotation = true; // Freeze the rotation to manually control it
 
         if (Input.GetKey(KeyCode.A))
         {
@@ -41,5 +47,7 @@ public class Ship : MonoBehaviour
         {
             transform.Rotate(-Vector3.forward);
         }
+
+        rigidBody.freezeRotation = false; // Stop manual rotation input
     }
 }
