@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class Ship : MonoBehaviour
 {
+
+    [SerializeField] float thrustPower = 5f;
+    [SerializeField] float rotationThrust = 200f;
+
     Rigidbody rigidBody;
     AudioSource audioSource;
 
@@ -22,9 +26,10 @@ public class Ship : MonoBehaviour
 
     void ThrustShip()
     {
+        // float thrustThisFrame = thrustPower * Time.deltaTime;
         if (Input.GetKey(KeyCode.Space))
         {
-            rigidBody.AddRelativeForce(Vector3.up);
+            rigidBody.AddRelativeForce(Vector3.up * thrustPower);
             // if (!audioSource.isPlaying) audioSource.Play();
             audioSource.pitch = 3;
         }
@@ -39,13 +44,15 @@ public class Ship : MonoBehaviour
     {
         rigidBody.freezeRotation = true; // Freeze the rotation to manually control it
 
+        float rotationThisFrame = rotationThrust * Time.deltaTime;
+
         if (Input.GetKey(KeyCode.A))
         {
-            transform.Rotate(Vector3.forward);
+            transform.Rotate(Vector3.forward * rotationThisFrame);
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            transform.Rotate(-Vector3.forward);
+            transform.Rotate(-Vector3.forward * rotationThisFrame);
         }
 
         rigidBody.freezeRotation = false; // Stop manual rotation input
