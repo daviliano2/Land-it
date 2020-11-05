@@ -7,7 +7,7 @@ public class Ship : MonoBehaviour
 {
 
     [SerializeField] float thrustPower = 5f;
-    [SerializeField] float rotationThrust = 200f;
+    [SerializeField] float rotationPower = 200f;
 
     Rigidbody rigidBody;
     AudioSource audioSource;
@@ -44,7 +44,7 @@ public class Ship : MonoBehaviour
     {
         rigidBody.freezeRotation = true; // Freeze the rotation to manually control it
 
-        float rotationThisFrame = rotationThrust * Time.deltaTime;
+        float rotationThisFrame = rotationPower * Time.deltaTime;
 
         if (Input.GetKey(KeyCode.A))
         {
@@ -56,5 +56,21 @@ public class Ship : MonoBehaviour
         }
 
         rigidBody.freezeRotation = false; // Stop manual rotation input
+    }
+
+    void OnCollisionEnter(Collision otherCollision)
+    {
+        switch (otherCollision.gameObject.tag)
+        {
+            case "Friendly":
+                print("collided with friendly object");
+                break;
+            default:
+                print("collided with hazard. BOOM");
+                Destroy(gameObject);
+                break;
+
+
+        }
     }
 }
