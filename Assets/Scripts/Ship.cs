@@ -67,7 +67,7 @@ public class Ship : MonoBehaviour
                 break;
             default:
                 print("collided with hazard. BOOM");
-                Destroy(gameObject);
+                // Destroy(gameObject);
                 break;
 
 
