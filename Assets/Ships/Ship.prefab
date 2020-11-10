@@ -158,8 +158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14a88c2bb7d3246449d8132509719c6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrustPower: 7
-  rotationThrust: 200
+  thrustPower: 5
+  rotationPower: 200
 --- !u!65 &1724705109
 BoxCollider:
   m_ObjectHideFlags: 0

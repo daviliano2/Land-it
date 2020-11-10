@@ -63,10 +63,10 @@ public class Ship : MonoBehaviour
         switch (otherCollision.gameObject.tag)
         {
             case "Friendly":
-                print("collided with friendly object");
+                // print("collided with friendly object");
                 break;
             default:
-                print("collided with hazard. BOOM");
+                print("BOOM! Dead");
                 // Destroy(gameObject);
                 break;
 
