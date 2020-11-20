@@ -29,7 +29,7 @@ public class Ship : MonoBehaviour
         // float thrustThisFrame = thrustPower * Time.deltaTime;
         if (Input.GetKey(KeyCode.Space))
         {
-            rigidBody.AddRelativeForce(Vector3.up * thrustPower);
+            rigidBody.AddRelativeForce(Vector3.up * (thrustPower * Time.deltaTime));
             // if (!audioSource.isPlaying) audioSource.Play();
             audioSource.pitch = 3;
         }
