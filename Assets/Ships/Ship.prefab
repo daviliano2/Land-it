@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 5878785430692256890}
   m_LocalRotation: {x: 0, y: 0, z: -0.006099933, w: 0.9999814}
   m_LocalPosition: {x: 0, y: 1.49, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5874368065338778207}
   m_Father: {fileID: 0}
@@ -43,8 +43,8 @@ Rigidbody:
   m_GameObject: {fileID: 5878785430692256890}
   serializedVersion: 2
   m_Mass: 0.1
-  m_Drag: 4
-  m_AngularDrag: 0.25
+  m_Drag: 0.2
+  m_AngularDrag: 0.1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14a88c2bb7d3246449d8132509719c6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrustPower: 75
+  thrustPower: 100
   rotationPower: 160
 --- !u!65 &1724705109
 BoxCollider:
