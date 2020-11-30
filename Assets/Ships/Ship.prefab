@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thrustPower: 100
-  rotationPower: 160
+  rotationPower: 200
 --- !u!65 &1724705109
 BoxCollider:
   m_ObjectHideFlags: 0

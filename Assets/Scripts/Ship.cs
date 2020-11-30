@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Ship : MonoBehaviour
 {
@@ -12,6 +10,9 @@ public class Ship : MonoBehaviour
     Rigidbody rigidBody;
     AudioSource audioSource;
 
+    enum State { Alive, Dying, Transcending }
+    State state = State.Alive;
+
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
@@ -20,8 +21,11 @@ public class Ship : MonoBehaviour
 
     void Update()
     {
-        ThrustShip();
-        RotateShip();
+        if (state == State.Alive)
+        {
+            ThrustShip();
+            RotateShip();
+        }
     }
 
     void ThrustShip()
@@ -60,17 +64,34 @@ public class Ship : MonoBehaviour
 
     void OnCollisionEnter(Collision otherCollision)
     {
+        if (state != State.Alive) return;
+
         switch (otherCollision.gameObject.tag)
         {
             case "Friendly":
-                // print("collided with friendly object");
+                break;
+            case "Finish":
+                state = State.Transcending;
+                Invoke("LoadNextScene", 1f);
                 break;
             default:
+                state = State.Dying;
                 print("BOOM! Dead");
+                Invoke("LoadFirstScene", 2f);
                 // Destroy(gameObject);
                 break;
 
 
         }
+    }
+
+    void LoadNextScene()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    void LoadFirstScene()
+    {
+        SceneManager.LoadScene(0);
     }
 }
