@@ -3,10 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class Ship : MonoBehaviour
 {
-
     [SerializeField] float thrustPower = 5f;
     [SerializeField] float rotationPower = 200f;
-
+    [SerializeField] AudioClip droneEngine = null;
+    [SerializeField] AudioClip finishBell = null;
+    [SerializeField] AudioClip deathAudio = null;
     Rigidbody rigidBody;
     AudioSource audioSource;
 
@@ -34,7 +35,10 @@ public class Ship : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             rigidBody.AddRelativeForce(Vector3.up * (thrustPower * Time.deltaTime));
-            // if (!audioSource.isPlaying) audioSource.Play();
+            if (!audioSource.isPlaying)
+            {
+                audioSource.PlayOneShot(droneEngine);
+            }
             audioSource.pitch = 3;
         }
         else
@@ -72,10 +76,13 @@ public class Ship : MonoBehaviour
                 break;
             case "Finish":
                 state = State.Transcending;
+                PlaySounds(finishBell);
                 Invoke("LoadNextScene", 1f);
                 break;
             default:
                 state = State.Dying;
+                audioSource.Stop();
+                PlaySounds(deathAudio);
                 print("BOOM! Dead");
                 Invoke("LoadFirstScene", 2f);
                 // Destroy(gameObject);
@@ -83,6 +90,12 @@ public class Ship : MonoBehaviour
 
 
         }
+    }
+
+    void PlaySounds(AudioClip oneTimeAudio)
+    {
+        audioSource.volume = 0.40f;
+        audioSource.PlayOneShot(oneTimeAudio);
     }
 
     void LoadNextScene()

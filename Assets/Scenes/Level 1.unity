@@ -883,10 +883,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2124011365, guid: d36a2c57a1596204f809aca812d069de, type: 3}
-      propertyPath: rotationPower
-      value: 225
-      objectReference: {fileID: 0}
     - target: {fileID: 5878785430692256888, guid: d36a2c57a1596204f809aca812d069de, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.94

@@ -60,7 +60,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 663cfd72ac646dd4c8bff85b29dd20ba, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 3
@@ -159,7 +159,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thrustPower: 100
-  rotationPower: 200
+  rotationPower: 225
+  droneEngine: {fileID: 8300000, guid: 663cfd72ac646dd4c8bff85b29dd20ba, type: 3}
+  finishBell: {fileID: 8300000, guid: d833661eacf09a14ca05c7f9a972c4b7, type: 3}
+  deathAudio: {fileID: 8300000, guid: cbaa88ea03ab23d439a60ae59fdd0c20, type: 3}
 --- !u!65 &1724705109
 BoxCollider:
   m_ObjectHideFlags: 0
