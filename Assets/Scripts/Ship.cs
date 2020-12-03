@@ -5,9 +5,16 @@ public class Ship : MonoBehaviour
 {
     [SerializeField] float thrustPower = 5f;
     [SerializeField] float rotationPower = 200f;
+
     [SerializeField] AudioClip droneEngine = null;
     [SerializeField] AudioClip finishBell = null;
     [SerializeField] AudioClip deathAudio = null;
+
+    [SerializeField] ParticleSystem thrustParticleOne = null;
+    [SerializeField] ParticleSystem thrustParticleTwo = null;
+    [SerializeField] ParticleSystem deathParticle = null;
+    [SerializeField] ParticleSystem finishParticle = null;
+
     Rigidbody rigidBody;
     AudioSource audioSource;
 
@@ -39,12 +46,22 @@ public class Ship : MonoBehaviour
             {
                 audioSource.PlayOneShot(droneEngine);
             }
+            if (!thrustParticleOne.isPlaying && !thrustParticleTwo.isPlaying) // super important!
+            {
+                thrustParticleOne.Play();
+                thrustParticleTwo.Play();
+            }
             audioSource.pitch = 3;
         }
         else
         {
             // audioSource.Stop();
             audioSource.pitch = 1;
+            if (thrustParticleOne.isPlaying && thrustParticleTwo.isPlaying) // super important!
+            {
+                thrustParticleOne.Stop();
+                thrustParticleTwo.Stop();
+            }
         }
     }
 
@@ -77,12 +94,20 @@ public class Ship : MonoBehaviour
             case "Finish":
                 state = State.Transcending;
                 PlaySounds(finishBell);
+                if (!finishParticle.isPlaying) // super important!
+                {
+                    finishParticle.Play();
+                }
                 Invoke("LoadNextScene", 1f);
                 break;
             default:
                 state = State.Dying;
                 audioSource.Stop();
                 PlaySounds(deathAudio);
+                if (!deathParticle.isPlaying) // super important!
+                {
+                    deathParticle.Play();
+                }
                 print("BOOM! Dead");
                 Invoke("LoadFirstScene", 2f);
                 // Destroy(gameObject);
