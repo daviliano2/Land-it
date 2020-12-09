@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Drone Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 3647323063323955945, guid: 8440dd08d4142fe4da66bc3faee4eb9c, type: 3}
+      propertyPath: m_Constraints
+      value: 56
+      objectReference: {fileID: 0}
     - target: {fileID: 3647323063323955946, guid: 8440dd08d4142fe4da66bc3faee4eb9c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.419
@@ -307,25 +311,6 @@ Light:
   m_CorrespondingSourceObject: {fileID: 2834021748823033995, guid: ed0ceb269728bbd4598e17e4c333884f, type: 3}
   m_PrefabInstance: {fileID: 2834021748185840145}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &922677019 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8592654845396169816, guid: 29d114a44bcdaa945bf37fb8b9b8fdbf, type: 3}
-  m_PrefabInstance: {fileID: 3883770052570864433}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &922677021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 922677019}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d74f7de2109f00498bc1303c392709a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementVector: {x: 0, y: 0, z: 17}
-  movementFactor: 0
 --- !u!1 &1214235583
 GameObject:
   m_ObjectHideFlags: 0
@@ -938,10 +923,6 @@ PrefabInstance:
     - target: {fileID: 3258874714291946964, guid: 29d114a44bcdaa945bf37fb8b9b8fdbf, type: 3}
       propertyPath: m_Name
       value: Obstacle 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8387206702945422614, guid: 29d114a44bcdaa945bf37fb8b9b8fdbf, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29d114a44bcdaa945bf37fb8b9b8fdbf, type: 3}

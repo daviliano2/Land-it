@@ -130,6 +130,6 @@ public class Ship : MonoBehaviour
 
     void LoadFirstScene()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(2);
     }
 }
