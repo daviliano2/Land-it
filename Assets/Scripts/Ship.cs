@@ -5,6 +5,7 @@ public class Ship : MonoBehaviour
 {
     [SerializeField] float thrustPower = 5f;
     [SerializeField] float rotationPower = 200f;
+    [SerializeField] float levelLoadDelay = 2f;
 
     [SerializeField] AudioClip droneEngine = null;
     [SerializeField] AudioClip finishBell = null;
@@ -98,7 +99,8 @@ public class Ship : MonoBehaviour
                 {
                     finishParticle.Play();
                 }
-                Invoke("LoadNextScene", 1f);
+                Destroy(gameObject, 1f);
+                Invoke("LoadNextScene", levelLoadDelay);
                 break;
             default:
                 state = State.Dying;
@@ -109,7 +111,7 @@ public class Ship : MonoBehaviour
                     deathParticle.Play();
                 }
                 print("BOOM! Dead");
-                Invoke("LoadFirstScene", 2f);
+                Invoke("LoadFirstScene", levelLoadDelay);
                 // Destroy(gameObject);
                 break;
 
@@ -130,6 +132,7 @@ public class Ship : MonoBehaviour
 
     void LoadFirstScene()
     {
+        // TODO: change back to 0 or 1 or whatever is the first level.
         SceneManager.LoadScene(2);
     }
 }

@@ -134,10 +134,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Drone Variant
       objectReference: {fileID: 0}
-    - target: {fileID: 3647323063323955945, guid: 8440dd08d4142fe4da66bc3faee4eb9c, type: 3}
-      propertyPath: m_Constraints
-      value: 56
-      objectReference: {fileID: 0}
     - target: {fileID: 3647323063323955946, guid: 8440dd08d4142fe4da66bc3faee4eb9c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.419
@@ -181,6 +177,10 @@ PrefabInstance:
     - target: {fileID: 3647323063323955946, guid: 8440dd08d4142fe4da66bc3faee4eb9c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6029168920131828564, guid: 8440dd08d4142fe4da66bc3faee4eb9c, type: 3}
+      propertyPath: lengthInSec
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8440dd08d4142fe4da66bc3faee4eb9c, type: 3}
