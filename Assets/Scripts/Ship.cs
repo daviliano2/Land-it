@@ -21,6 +21,7 @@ public class Ship : MonoBehaviour
 
     enum State { Alive, Dying, Transcending }
     State state = State.Alive;
+    bool ignoreCollision = false;
 
     void Start()
     {
@@ -35,6 +36,10 @@ public class Ship : MonoBehaviour
             ThrustShip();
             RotateShip();
         }
+
+        // Before shipping the game we need to tick off the "Development Build" 
+        // checkbox in the build settings so the players cannot access to it.
+        if (Debug.isDebugBuild) DebugKeys();
     }
 
     void ThrustShip()
@@ -86,7 +91,7 @@ public class Ship : MonoBehaviour
 
     void OnCollisionEnter(Collision otherCollision)
     {
-        if (state != State.Alive) return;
+        if (state != State.Alive || ignoreCollision) return;
 
         switch (otherCollision.gameObject.tag)
         {
@@ -99,7 +104,7 @@ public class Ship : MonoBehaviour
                 {
                     finishParticle.Play();
                 }
-                Destroy(gameObject, 1f);
+                // Destroy(gameObject, 1f);
                 Invoke("LoadNextScene", levelLoadDelay);
                 break;
             default:
@@ -114,8 +119,6 @@ public class Ship : MonoBehaviour
                 Invoke("LoadFirstScene", levelLoadDelay);
                 // Destroy(gameObject);
                 break;
-
-
         }
     }
 
@@ -127,12 +130,24 @@ public class Ship : MonoBehaviour
 
     void LoadNextScene()
     {
-        SceneManager.LoadScene(1);
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentScene + 1);
     }
 
     void LoadFirstScene()
     {
-        // TODO: change back to 0 or 1 or whatever is the first level.
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(0);
+    }
+
+    void DebugKeys()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            LoadNextScene();
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            ignoreCollision = !ignoreCollision;
+        }
     }
 }
