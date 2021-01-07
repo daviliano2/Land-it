@@ -131,7 +131,16 @@ public class Ship : MonoBehaviour
     void LoadNextScene()
     {
         int currentScene = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentScene + 1);
+        int totalNumberScenes = SceneManager.sceneCountInBuildSettings;
+
+        if (currentScene == totalNumberScenes - 1)
+        {
+            SceneManager.LoadScene(1);
+        }
+        else
+        {
+            SceneManager.LoadScene(currentScene + 1);
+        }
     }
 
     void LoadFirstScene()
