@@ -73,7 +73,7 @@ public class Ship : MonoBehaviour
 
     void RotateShip()
     {
-        rigidBody.freezeRotation = true; // Freeze the rotation to manually control it
+        rigidBody.angularVelocity = Vector3.zero; // remove rotation due to physics
 
         float rotationThisFrame = rotationPower * Time.deltaTime;
 
@@ -85,8 +85,6 @@ public class Ship : MonoBehaviour
         {
             transform.Rotate(-Vector3.forward * rotationThisFrame);
         }
-
-        rigidBody.freezeRotation = false; // Stop manual rotation input
     }
 
     void OnCollisionEnter(Collision otherCollision)
